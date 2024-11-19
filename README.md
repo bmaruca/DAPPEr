@@ -1,6 +1,6 @@
-6/14/2024 RK
+11/19/2024 Gia Scozzaro
 
-Wallops Flight Tests UDIP 2024: 
+DAPPEr 2024 Repository (Flight + Ground Software)
 
 test_blink.cpp: simple blink program for initial testing of PlatformIO setup environment using inbuilt LED on Portenta H7. 
 Requires only Portenta H7.
