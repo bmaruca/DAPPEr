@@ -5,13 +5,12 @@
 #include "Arduino_PortentaBreakout.h"
 #include <Wire.h>
 
-
-// COMMUNICATION
+// === COMMUNICATION ===
 BreakoutCarrierClass Breakout;
-UART myUART = Breakout.UART1;     
+UART myUART = Breakout.UART1;
 
 // === CHECKSUM FUNCTIONS ===
- 
+
 int generate_checksum(int buf[], int len){
   int sum = 0;
   while (--len){
@@ -28,11 +27,11 @@ bool verify_checksum(int buf[], int len) {
   return sum == 0;
 }
 
-//-------------------------------------
+//--------------------------------------
 
 bool myIncoming = false;
 int myLastUART = -1;
-int totalBytes = 12; // Header + Body bytes (update value if necessary), % 4 to find data count value
+int totalBytes = 12; // Header + Body bytes, % 4 to find data count value
 
 void setup(){  
     pinMode(LEDB, OUTPUT);   // LEDB = blue, LEDG or LED_BUILTIN = green, LEDR = red
@@ -51,7 +50,7 @@ void loop()
 
   // BODY (totalBytes bytes)
   // (Read: returned from ADCS)
-  // (Write: Values given by user, add write commands)
+  // (Write: Values given by user)
 
   // CHECKSUM (1 byte)
   // First, populate buf array with header/body values
@@ -64,7 +63,7 @@ void loop()
       }
   }
 
-  //printf("%d", generate_checksum(buf, totalBytes));        // print the character
+  printf("%d", generate_checksum(buf, totalBytes));        // print the character
 
   // Generate checksum
   myUART.write(generate_checksum(buf, totalBytes));
