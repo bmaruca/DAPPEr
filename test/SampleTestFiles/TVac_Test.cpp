@@ -336,7 +336,7 @@ void loop() {
   // Increase round
   g_roundCount++;
 
-  // Print "Round N" in Serial
+  // Print "Round N" in serial
   Serial.println();
   Serial.print("Round ");
   Serial.print(g_roundCount);
@@ -354,7 +354,6 @@ void loop() {
 
   // GYRO
   {
-    // Combine "Packet #N" and data into one string
     char outBuf[128];
     int len = sprintf(outBuf,
       "Packet #%d:\n"
@@ -384,10 +383,10 @@ void loop() {
   }
 
   // MLX90395 reads
-  measureCmdMag(0x3E); // if 0x3E is correct for our sensor
+  measureCmdMag(0x3E); // confirm this is correct
   delay(20);
 
-  // optional: while(digitalRead(MAG_DRDY_PIN) != HIGH){(wait)}
+  // might need to do this: while(digitalRead(MAG_DRDY_PIN) != HIGH){(wait)}
 
   uint8_t magStatus = readCmdMag(0x4F);
   float tVal, xVal, yVal, zVal;

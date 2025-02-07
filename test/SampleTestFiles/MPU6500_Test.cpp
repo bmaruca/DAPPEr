@@ -313,10 +313,8 @@ void loop() {
 
   float tempC = convertTempC(tRaw);
 
-  //---------------Single Writes for Each File---------------
   // GYRO
   {
-    // Combine "Packet #N" and data into one string
     char outBuf[128];
     int len = sprintf(outBuf,
       "Packet #%d:\n"
