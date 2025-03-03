@@ -79,7 +79,7 @@ void removeOldDataFiles() {
   remove(TEMP_FILE);
 }
 
-// Write to the SD and print how many bytes
+// Write to the SD and print the actual data
 void sd_write(const char* filename, const uint8_t* packet, size_t length) {
   FILE *mf = fopen(filename, "ab");
   if (!mf) {
@@ -91,10 +91,9 @@ void sd_write(const char* filename, const uint8_t* packet, size_t length) {
   size_t bytesWritten = fwrite(packet, 1, length, mf);
   fclose(mf);
 
-  Serial.print("Wrote ");
-  Serial.print(bytesWritten);
-  Serial.print(" bytes to ");
-  Serial.println(filename);
+  Serial.print("Data: ");
+  Serial.write(packet, length);
+  Serial.println();
 }
 
 // Initialize SD
@@ -317,7 +316,7 @@ void loop() {
   {
     char outBuf[128];
     int len = sprintf(outBuf,
-      "Packet #%d:\n"
+      "\nPacket #%d:\n"
       "Raw Gyro: GX:%d GY:%d GZ:%d\n"
       "Scaled Gyro: GX:%.2f GY:%.2f GZ:%.2f dps\n",
       g_roundCount,
