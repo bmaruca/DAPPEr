@@ -49,3 +49,6 @@ Uses semaphores for cache coherence. M4 stores data in DRAM, and M7 fetches it. 
 test_DualProcessorRemoteProcedureCall: Uses RPC messaging to communicate between the two cores by binding and calling functions and over RPC messaging serial stream. M4 waits for data from Science Board over UART2, then calls function that is bound by M7 to write to a shared data variable. M4 also messages data to M7 over RPC stream. M7 waits until it receives data over RPC stream to then print out to Serial if needed. Serial Monitor prints out setup and loop execution time for data received from Science Board.
 
 
+Corey Mitterer was here
+
+
