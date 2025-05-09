@@ -100,8 +100,11 @@ void sd_write(const char* filename, const uint8_t* packet, size_t length) {
 }
 
 void sd_init() {
+  Serial.print("Do I get here?\n");
   int err = fs.mount(&block_device);
-  if (err) err = fs.reformat(&block_device);
+  Serial.print("First mounting tried\n");
+  if (err) {
+    err = fs.reformat(&block_device);}
   if (err) {
     Serial.println("Error formatting SDCARD");
     displayPrint(0x00);
@@ -193,6 +196,8 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   Serial.begin(115200);
   while (!Serial) {}
+
+  displayPrint(0x04);
 
   // SD card
   sd_init();
