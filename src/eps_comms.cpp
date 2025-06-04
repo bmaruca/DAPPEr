@@ -18,7 +18,7 @@ void loop() {
   myI2C2.beginTransmission(0x2B); 
   myI2C2.write(0x10);
   myI2C2.write(0xE2);        // sends the given value
-  myI2C2.write(0x80);
+  myI2C2.write(0x04);
   myI2C2.endTransmission();    // stop transmitting
   delay(1);
 
