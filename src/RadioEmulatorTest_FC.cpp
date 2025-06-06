@@ -13,13 +13,13 @@
 #include <stdio.h>
 
 // SSD segment pins
-breakoutPin A = PWM9;
-breakoutPin B = PWM8;
-breakoutPin C = PWM7;
-breakoutPin D = PWM6;
-breakoutPin E = PWM5;
-breakoutPin Z = PWM4;
-breakoutPin G = PWM3;
+breakoutPin A  = PWM8;
+breakoutPin B  = PWM9;
+breakoutPin C  = PWM7;
+breakoutPin D  = PWM3;
+breakoutPin E  = PWM4;
+breakoutPin Z  = PWM5;
+breakoutPin G  = PWM6;
 breakoutPin DP = PWM2;
 
 int seg[]{ A, B, C, D, E, Z, G, DP };

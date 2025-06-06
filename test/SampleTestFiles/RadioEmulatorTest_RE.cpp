@@ -10,8 +10,8 @@ void setup() {
     ; // Do nothing until Serial is ready
   }
 
-  // Specify RX, TX pins for Nano ESP32!
-  Serial1.begin(FC_BAUD, SERIAL_8N1, 43, 44);  // RX=44 (D0), TX=43 (D1)
+  // Specify RX & TX pins for Nano ESP32!
+  Serial1.begin(FC_BAUD, SERIAL_8N1, 6, 5);
 
   delay(100);              // Let everything power up
   
