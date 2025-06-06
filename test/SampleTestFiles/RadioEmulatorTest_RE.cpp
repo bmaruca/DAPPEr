@@ -4,9 +4,14 @@
 
 void setup() {
   Serial.begin(115200);    // USB Serial to your PC
+  
+  // Wait for Serial to initialize
+  while (!Serial) {
+    ; // Do nothing until Serial is ready
+  }
 
   // Specify RX, TX pins for Nano ESP32!
-  Serial1.begin(FC_BAUD, SERIAL_8N1, 44, 43);  // RX=44 (D0), TX=43 (D1)
+  Serial1.begin(FC_BAUD, SERIAL_8N1, 43, 44);  // RX=44 (D0), TX=43 (D1)
 
   delay(100);              // Let everything power up
   

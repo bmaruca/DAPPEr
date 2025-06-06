@@ -1,4 +1,16 @@
 #include "Arduino_PortentaBreakout.h"
+#include <arduino.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_LSM9DS1.h>
+#include <Adafruit_H3LIS331.h>
+#include <math.h>
+#include <serial.h>
+#include "SDMMCBlockDevice.h"
+#include "FATFileSystem.h"
+#include "SocketHelpers.h"
+#include <stdio.h>
 
 // SSD segment pins
 breakoutPin A = PWM9;
@@ -55,6 +67,7 @@ void loop() {
   if (!started) {
     if (Serial3.available()) {
       String cmd = Serial3.readStringUntil('\n');
+      Serial.print("FC received: "); Serial.println(cmd); // For debugging
       cmd.trim();
       if (cmd.equalsIgnoreCase("START")) {
         started = true;
@@ -62,7 +75,7 @@ void loop() {
       }
     }
     return; // Stay here until started
-  }
+  } 
 
   // Cycle 0-F, forever
   while (true) {
