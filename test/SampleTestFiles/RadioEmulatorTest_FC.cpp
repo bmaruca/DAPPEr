@@ -67,7 +67,6 @@ void loop() {
   if (!started) {
     if (Serial3.available()) {
       String cmd = Serial3.readStringUntil('\n');
-      Serial.print("FC received: "); Serial.println(cmd); // For debugging
       cmd.trim();
       if (cmd.equalsIgnoreCase("START")) {
         started = true;
